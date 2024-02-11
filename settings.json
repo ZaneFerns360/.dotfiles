@@ -1,0 +1,79 @@
+{
+  "workbench.editorAssociations": {
+    "*.exe": "default",
+    "*.o": "default"
+  },
+  "git.autofetch": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "solidity.telemetry": false,
+  "react-native-tools.showUserTips": false,
+  "explorer.confirmDelete": false,
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "c": false
+  },
+  "redhat.telemetry.enabled": true,
+  "cmake.configureOnOpen": true,
+  "vscode-edge-devtools.webhint": false,
+  "css.lint.unknownAtRules": "ignore",
+  "window.commandCenter": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.startupEditor": "none",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "workbench.settings.applyToAllProfiles": [
+    "editor.formatOnSave",
+    "editor.fontFamily"
+  ],
+  "window.titleBarStyle": "custom",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+  "azureFunctions.showPythonVenvWarning": false,
+  "git.openRepositoryInParentFolders": "never",
+  "settingsSync.ignoredSettings": [
+    "editor.fontFamily",
+    "editor.letterSpacing",
+    "terminal.integrated.letterSpacing"
+  ],
+  "terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font",
+  "editor.fontFamily": "JetBrainsMonoNL Nerd Font",
+  "editor.fontLigatures": false,
+  "terminal.integrated.letterSpacing": 1,
+  "editor.letterSpacing": 1,
+  "security.workspace.trust.untrustedFiles": "open",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "gitlens.ai.experimental.provider": "openai",
+  "gitlens.ai.experimental.openai.model": "gpt-4",
+  "githubPullRequests.createOnPublishBranch": "never",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.preferredDarkColorTheme": "Default Light+",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "liveshare.accessibility.voiceEnabled": false
+}
