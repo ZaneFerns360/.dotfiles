@@ -5,10 +5,13 @@
 lvim.builtin.terminal.open_mapping = "<c-v>"
 vim.cmd("command! QQ q!")
 vim.cmd("command! Q q")
-vim.api.nvim_set_keymap("n", "Q!", ":q!<CR>", { noremap = true })
 vim.cmd("command! WQ wq")
 lvim.keys.normal_mode[";"] = ":"
 lvim.keys.normal_mode["."] = ";"
+lvim.keys.normal_mode["qq"] = ":q!"
+lvim.keys.normal_mode["qQ"] = ":q!"
+lvim.keys.normal_mode["Qq"] = ":q!"
+lvim.keys.normal_mode["QQ"] = ":q!"
 
 lvim.format_on_save.enabled = true
 local formatters = require("lvim.lsp.null-ls.formatters")
@@ -38,6 +41,12 @@ require("lvim.lsp.manager").setup("cssls", {
 	},
 })
 
+local opts = {
+	root_dir = { "*.asm" },
+}
+
+require("lvim.lsp.manager").setup("asm_lsp", opts)
+
 lvim.plugins = {
 	"AckslD/swenv.nvim",
 	"stevearc/dressing.nvim",
@@ -52,6 +61,29 @@ lvim.plugins = {
 		"ellisonleao/glow.nvim",
 		config = true,
 		cmd = "Glow",
+	},
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
+	},
+	{
+		"mistricky/codesnap.nvim",
+		build = "make",
+		lazy = "true",
+		cmd = "CodeSnapPreviewOn",
 	},
 }
 
