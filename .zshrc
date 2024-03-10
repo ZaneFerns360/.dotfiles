@@ -68,6 +68,24 @@ if [ -z "$TMUX" ]; then
     fi
 fi
 
+
+# .zshrc snippet to run tmux kill-server before any shutdown command
+shutdown() {
+    # Run tmux kill-server before executing the actual shutdown command
+    # Execute the original shutdown command
+    command shutdown "$@"
+    tmux kill-server
+}
+
+
+# .zshrc snippet to run tmux kill-server before any reboot command
+reboot() {
+    # Run tmux kill-server before executing the actual reboot command
+    # Execute the original reboot command
+    command reboot "$@"
+    tmux kill-server
+}
+
 alias l='lvim'
 alias e='exit'
 alias c='clear'
@@ -76,3 +94,6 @@ export PATH=/home/zane/.local/bin:$PATH
 #zoxide
 eval "$(zoxide init zsh)"
 alias tmux="tmux -2"
+
+#go
+export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
