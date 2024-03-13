@@ -47,6 +47,12 @@ local opts = {
 
 require("lvim.lsp.manager").setup("asm_lsp", opts)
 
+require("lvim.lsp.manager").setup("astro", {
+	init_options = {
+		typescript = { tsdk = vim.fs.normalize("./node_modules/typescript/lib") },
+	},
+})
+
 lvim.plugins = {
 	"AckslD/swenv.nvim",
 	"stevearc/dressing.nvim",
@@ -85,9 +91,31 @@ lvim.plugins = {
 		lazy = "true",
 		cmd = "CodeSnapPreviewOn",
 	},
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		-- 	---@type Flash.Config
+		opts = {},
+  -- stylua: ignore
+  keys = {
+     { "<leader><leader>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+     { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+	},
 }
 
 lvim.builtin.which_key.mappings["C"] = {
 	name = "Python",
 	c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
 }
+
+lvim.builtin.which_key.mappings["n"] = {
+	name = "Number",
+	n = { "<cmd>set relativenumber!<CR>", "Toggle relative line numbers" },
+}
+
+-- X closes a buffer
+-- lvim.keys.normal_mode["<Tab>"] = ":BufferKill<CR>"
