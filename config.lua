@@ -53,6 +53,17 @@ require("lvim.lsp.manager").setup("astro", {
 	},
 })
 
+require("nvim-web-devicons").setup({
+	strict = true,
+	override_by_extension = {
+		astro = {
+			icon = "",
+			color = "#EF8547",
+			name = "astro",
+		},
+	},
+})
+
 lvim.plugins = {
 	"AckslD/swenv.nvim",
 	"stevearc/dressing.nvim",
