@@ -10,6 +10,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+export EDITOR="nvim"
+export SUDO_EDITOR="nvim"
+
 # pnpm
 export PNPM_HOME="/home/zane/.local/share/pnpm"
 case ":$PATH:" in
@@ -86,8 +89,10 @@ reboot() {
     tmux kill-server
 }
 
-alias l='lvim'
+alias l='nvim'
+alias n='nvim'
 alias e='exit'
+alias q='exit'
 alias c='clear'
 
 export PATH=/home/zane/.local/bin:$PATH
