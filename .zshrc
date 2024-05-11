@@ -89,6 +89,10 @@ reboot() {
     tmux kill-server
 }
 
+update(){
+    command yay -Syu --noconfirm --sudoloop
+}
+
 alias l='nvim'
 alias n='nvim'
 alias e='exit'
