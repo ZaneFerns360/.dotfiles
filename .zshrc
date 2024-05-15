@@ -93,6 +93,13 @@ update(){
     command yay -Syu --noconfirm --sudoloop
 }
 
+
+f() {
+  local selected_file
+  selected_file=$(fd --type f --hidden --exclude .git | fzf)
+  [[ -n "$selected_file" ]] && nvim "$selected_file"
+}
+
 alias l='nvim'
 alias n='nvim'
 alias e='exit'
