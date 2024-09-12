@@ -71,28 +71,13 @@ if [ -z "$TMUX" ]; then
     fi
 fi
 
-
-# .zshrc snippet to run tmux kill-server before any shutdown command
-shutdown() {
-    # Run tmux kill-server before executing the actual shutdown command
-    # Execute the original shutdown command
-    command shutdown "$@"
-    tmux kill-server
-}
-
-
-# .zshrc snippet to run tmux kill-server before any reboot command
-reboot() {
-    # Run tmux kill-server before executing the actual reboot command
-    # Execute the original reboot command
-    command reboot "$@"
-    tmux kill-server
-}
-
 update(){
     command yay -Syu --noconfirm --sudoloop
 }
 
+activate(){
+    source .venv/bin/activate
+}
 
 f() {
   local selected_file
