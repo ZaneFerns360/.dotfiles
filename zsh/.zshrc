@@ -42,6 +42,7 @@ fi
 # <<< conda initialize <<<
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export ANDROID_HOME=/home/zane/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -90,6 +91,15 @@ alias n='nvim'
 alias e='exit'
 alias q='exit'
 alias c='clear'
+
+
+# Replace ls with exa
+alias la='exa -a --grid'
+alias ls='exa --grid'
+alias lg='exa -l --grid --git'
+alias lag='exa -la --grid --header --git'
+alias li='exa -lh --accessed --modified --created'
+
 
 export PATH=/home/zane/.local/bin:$PATH
 #zoxide
