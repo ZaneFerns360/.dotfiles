@@ -9,7 +9,7 @@ zstyle :compinstall filename '/home/zane/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
+bindkey -v
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 

@@ -50,3 +50,4 @@ stow -v -S --target=$HOME/.config/kitty kitty
 stow -v -S --override --target=$HOME wezterm
 
 source $HOME/.zshrc
+starship preset pure-preset -o ~/.config/starship.toml
