@@ -10,6 +10,8 @@ config.initial_rows = 45
 config.initial_cols = 192
 config.text_background_opacity = 1
 config.bold_brightens_ansi_colors = true
+config.freetype_load_flags = "FORCE_AUTOHINT"
+config.freetype_load_target = "Normal"
 
 config.foreground_text_hsb = {
 	hue = 1,
