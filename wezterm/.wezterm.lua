@@ -12,6 +12,12 @@ config.text_background_opacity = 1
 config.bold_brightens_ansi_colors = true
 config.freetype_load_flags = "FORCE_AUTOHINT"
 config.freetype_load_target = "Normal"
+config.warn_about_missing_glyphs = false
+
+local gpus = wezterm.gui.enumerate_gpus()
+
+config.webgpu_preferred_adapter = gpus[1]
+config.front_end = "WebGpu"
 
 config.foreground_text_hsb = {
 	hue = 1,
