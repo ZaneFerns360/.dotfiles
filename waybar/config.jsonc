@@ -26,7 +26,6 @@
         "temperature",
         "backlight",
         "keyboard-state",
-        "hyprland/language",
         "battery",
         "battery#bat2",
         "clock",
