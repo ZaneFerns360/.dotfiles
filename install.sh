@@ -14,6 +14,18 @@ if [ -d "$HOME/.config/kitty" ]; then
     rm -r "$HOME/.config/kitty"
 fi
 
+if [ -d "$HOME/.config/hypr" ]; then
+    rm -r "$HOME/.config/hypr"
+fi
+
+if [ -d "$HOME/.config/waybar" ]; then
+    rm -r "$HOME/.config/waybar"
+fi
+
+if [ -d "$HOME/.config/xdg-desktop-portal" ]; then
+    rm -r "$HOME/.config/xdg-desktop-portal"
+fi
+
 if [ -L $HOME/.zshrc ]; then
     rm $HOME/.zshrc
 fi
@@ -22,10 +34,18 @@ if [ -L $HOME/.wezterm.lua ]; then
     rm $HOME/.wezterm.lua
 fi
 
+if [ -L $HOME/.ideavimrc ]; then
+    rm $HOME/.ideavimrc
+fi
+
+
 # Symlink tmux to $HOME/.config/tmux
 
 mkdir $HOME/.config/tmux
 mkdir $HOME/.config/kitty
+mkdir $HOME/.config/hypr
+mkdir $HOME/.config/waybar
+mkdir $HOME/.config/xdg-desktop-portal
 stow -v -S --target=$HOME/.config/tmux tmux
 
 # Clone Tmux Plugin Manager (TPM)
@@ -46,8 +66,19 @@ tmux source ~/.config/tmux/tmux.conf
 # Symlink kitty to $HOME/.config/kitty
 stow -v -S --target=$HOME/.config/kitty kitty
 
+# Symlink hypr to $HOME/.config/hypr
+stow -v -S --target=$HOME/.config/hypr hypr
+
+# Symlink hypr to $HOME/.config/waybar
+stow -v -S --target=$HOME/.config/waybar waybar
+
+# Symlink hypr to $HOME/.config/xdg-desktop-portal
+stow -v -S --target=$HOME/.config/xdg-desktop-portal xdg-desktop-portal
+
 # Symlink .wezterm.lua to $HOME/
 stow -v -S --override --target=$HOME wezterm
+
+stow -v -S --override --target=$HOME idea
 
 source $HOME/.zshrc
 starship preset pure-preset -o ~/.config/starship.toml
