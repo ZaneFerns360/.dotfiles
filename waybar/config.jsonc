@@ -19,13 +19,14 @@
         "mpd",
         "idle_inhibitor",
         "pulseaudio",
+        "keyboard-state",
+        "custom/hyprpicker",
         "network",
         "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
-        "keyboard-state",
         "battery",
         "battery#bat2",
         "clock",
@@ -50,11 +51,10 @@
     //     }
     // },
     "keyboard-state": {
-        "numlock": true,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
-            "locked": "",
+            "locked": "",
             "unlocked": ""
         }
     },
@@ -186,6 +186,10 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+   "custom/hyprpicker": {
+        "format": "{}",  // Replace with your desired icon
+        "on-click": "hyprpicker --autocopy --format=hex --no-zoom",
     },
     "custom/media": {
         "format": "{icon} {}",
