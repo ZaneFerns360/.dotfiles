@@ -26,6 +26,14 @@ if [ -d "$HOME/.config/xdg-desktop-portal" ]; then
     rm -r "$HOME/.config/xdg-desktop-portal"
 fi
 
+if [ -d "$HOME/.config/wofi" ]; then
+    rm -r "$HOME/.config/wofi"
+fi
+
+if [ -d "$HOME/.config/wlogout" ]; then
+    rm -r "$HOME/.config/wlogout"
+fi
+
 if [ -L $HOME/.zshrc ]; then
     rm $HOME/.zshrc
 fi
@@ -45,7 +53,10 @@ mkdir $HOME/.config/tmux
 mkdir $HOME/.config/kitty
 mkdir $HOME/.config/hypr
 mkdir $HOME/.config/waybar
+mkdir $HOME/.config/wofi
+mkdir $HOME/.config/wlogout
 mkdir $HOME/.config/xdg-desktop-portal
+
 stow -v -S --target=$HOME/.config/tmux tmux
 
 # Clone Tmux Plugin Manager (TPM)
@@ -71,6 +82,12 @@ stow -v -S --target=$HOME/.config/hypr hypr
 
 # Symlink hypr to $HOME/.config/waybar
 stow -v -S --target=$HOME/.config/waybar waybar
+
+# Symlink hypr to $HOME/.config/wofi
+stow -v -S --target=$HOME/.config/wofi wofi
+
+# Symlink hypr to $HOME/.config/wlogout
+stow -v -S --target=$HOME/.config/wlogout wlogout
 
 # Symlink hypr to $HOME/.config/xdg-desktop-portal
 stow -v -S --target=$HOME/.config/xdg-desktop-portal xdg-desktop-portal
