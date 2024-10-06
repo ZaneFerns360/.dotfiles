@@ -34,6 +34,10 @@ if [ -d "$HOME/.config/wlogout" ]; then
     rm -r "$HOME/.config/wlogout"
 fi
 
+if [ -d "$HOME/.config/dunst" ]; then
+    rm -r "$HOME/.config/dunst"
+fi
+
 if [ -L $HOME/.zshrc ]; then
     rm $HOME/.zshrc
 fi
@@ -55,6 +59,7 @@ mkdir $HOME/.config/hypr
 mkdir $HOME/.config/waybar
 mkdir $HOME/.config/wofi
 mkdir $HOME/.config/wlogout
+mkdir $HOME/.config/dunst
 mkdir $HOME/.config/xdg-desktop-portal
 
 stow -v -S --target=$HOME/.config/tmux tmux
@@ -88,6 +93,9 @@ stow -v -S --target=$HOME/.config/wofi wofi
 
 # Symlink hypr to $HOME/.config/wlogout
 stow -v -S --target=$HOME/.config/wlogout wlogout
+
+# Symlink hypr to $HOME/.config/dunst
+stow -v -S --target=$HOME/.config/dunst dunst
 
 # Symlink hypr to $HOME/.config/xdg-desktop-portal
 stow -v -S --target=$HOME/.config/xdg-desktop-portal xdg-desktop-portal

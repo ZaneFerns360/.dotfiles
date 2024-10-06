@@ -118,6 +118,7 @@ button:hover {
 }
 
 #clock {
+  font-family: "JetBrainsMono Nerd Font";
   background-color: #64727d;
 }
 
@@ -218,8 +219,19 @@ label:focus {
 }
 
 #custom-hyprpicker {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: #2980b9;
+
+  color: white; /* Improve font contrast */
+  font-size: 14px; /* Adjust size if needed */
+  border-radius: 8px; /* Add rounded corners for a better look */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#custom-hyprpicker:hover {
+  background-color: yellow; /* Change background to yellow on hover */
+  color: black; /* Optional: change text color for better contrast */
 }
 
 #custom-capslock {
@@ -242,7 +254,7 @@ label:focus {
 }
 
 #temperature {
-  background-color: #f0932b;
+  background-color: #2980b9;
 }
 
 #temperature.critical {
