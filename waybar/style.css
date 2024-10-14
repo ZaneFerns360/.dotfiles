@@ -6,7 +6,7 @@
 
 window#waybar {
   background-color: rgba(43, 48, 59, 0.5);
-  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+  /*  border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
   color: #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -120,35 +120,55 @@ button:hover {
 #clock {
   font-family: "JetBrainsMono Nerd Font";
   background-color: #64727d;
+  border-radius: 10px;
 }
 
 #battery {
-  background-color: #ffffff;
-  color: #000000;
+  background: linear-gradient(
+    45deg,
+    #1abc9c,
+    #16a085
+  ); /* Greenish-blue gradient background */
+  color: #ffffff; /* Text color */
+  border-radius: 12px; /* Rounded corners */
 }
 
 #battery.charging,
 #battery.plugged {
   color: #ffffff;
-  background-color: #26a65b;
+  background: linear-gradient(
+    45deg,
+    #2ecc71,
+    #27ae60
+  ); /* Green gradient for charging and plugged states */
+  border-radius: 12px; /* Rounded corners */
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background: linear-gradient(
+      45deg,
+      #1abc9c,
+      #16a085
+    ); /* Greenish-blue gradient background */
+    color: #ffffff; /* Text color */
+    border-radius: 12px; /* Rounded corners */
   }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
+  background: linear-gradient(
+    45deg,
+    #e74c3c,
+    #c0392b
+  ); /* Orangish-red to red gradient for critical state */
   color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  border-radius: 12px; /* Rounded corners */
 }
 
 #power-profiles-daemon {
@@ -156,17 +176,32 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-  background-color: #f53c3c;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 60, 60, 0.8),
+    rgba(255, 105, 105, 0.8)
+  );
   color: #ffffff;
 }
 
 #power-profiles-daemon.balanced {
-  background-color: #2980b9;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(41, 128, 185, 0.8),
+    rgba(109, 182, 238, 0.8)
+  );
   color: #ffffff;
 }
 
 #power-profiles-daemon.power-saver {
-  background-color: #2ecc71;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.8),
+    rgba(144, 237, 188, 0.8)
+  );
   color: #000000;
 }
 
@@ -175,37 +210,97 @@ label:focus {
 }
 
 #cpu {
-  background-color: #2ecc71;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.8),
+    rgba(144, 237, 188, 0.8)
+  );
   color: #000000;
 }
 
 #memory {
-  background-color: #9b59b6;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(155, 89, 182, 0.8),
+    rgba(198, 143, 233, 0.8)
+  );
+  color: #ffffff;
 }
 
 #disk {
-  background-color: #964b00;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(150, 75, 0, 0.8),
+    rgba(205, 133, 63, 0.8)
+  );
+  color: #ffffff;
 }
 
 #backlight {
-  background-color: #90b1b1;
+  background: linear-gradient(
+    135deg,
+    #90b1b1,
+    #6a8888
+  ); /* Gradient background */
+  color: #ffffff; /* Text color */
+  padding: 0 10px; /* Padding for better spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease; /* Smooth transition for background and scale */
+}
+
+#backlight:hover {
+  background: linear-gradient(
+    135deg,
+    #b2d0d0,
+    #5c7a7a
+  ); /* Lighter gradient on hover */
 }
 
 #network {
-  background-color: #2980b9;
+  background: linear-gradient(
+    135deg,
+    #2980b9,
+    #1a5d83
+  ); /* Gradient background for normal state */
+  color: #ffffff; /* Text color */
+  padding: 0 10px; /* Padding for better spacing */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: background 0.3s ease; /* Smooth transition for background changes */
 }
 
 #network.disconnected {
-  background-color: #f53c3c;
+  background: linear-gradient(
+    135deg,
+    #f53c3c,
+    #e03030
+  ); /* Gradient background for disconnected state */
+  color: #ffffff; /* Text color */
 }
 
 #pulseaudio {
-  background-color: #2980b9;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(41, 128, 185, 0.8),
+    rgba(109, 182, 238, 0.8)
+  );
   color: #ffffff;
 }
 
 #pulseaudio.muted {
-  background-color: #90b1b1;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(144, 177, 177, 0.8),
+    rgba(187, 202, 202, 0.8)
+  );
   color: #2a5c45;
 }
 
@@ -219,24 +314,99 @@ label:focus {
 }
 
 #custom-hyprpicker {
-  padding-right: 10px;
-  padding-left: 10px;
-  background-color: #2980b9;
-
-  color: white; /* Improve font contrast */
-  font-size: 14px; /* Adjust size if needed */
-  border-radius: 8px; /* Add rounded corners for a better look */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  padding: 0px 15px; /* Adjust padding for a better button shape */
+  background: linear-gradient(
+    45deg,
+    #2980b9,
+    #0a3d62
+  ); /* Gradient background */
+  color: white;
+  font-size: 16px; /* Increase font size for better readability */
+  font-weight: bold; /* Make text bold for emphasis */
+  border: none; /* Remove border */
+  border-radius: 12px; /* More rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 #custom-hyprpicker:hover {
-  background-color: yellow; /* Change background to yellow on hover */
-  color: black; /* Optional: change text color for better contrast */
+  background: linear-gradient(
+    45deg,
+    #f1c40f,
+    #f39c12
+  ); /* Change gradient on hover */
+  color: black; /* Change text color */
 }
 
-#custom-capslock {
-  color: #ffffff;
-  padding: 0 10px;
+#custom-weather {
+  background: linear-gradient(135deg, #ff6f91, #de68a0, #9b59b6);
+  padding: 0px 10px; /* Add padding for better spacing */
+  border-radius: 12px; /* Rounded corners */
+}
+
+#custom-weather.severe {
+  background: linear-gradient(
+    45deg,
+    #eb937d,
+    #d45d4a
+  ); /* Gradient for severe weather */
+  color: #ffffff; /* Text color */
+}
+
+#custom-weather.sunnyDay {
+  background: linear-gradient(
+    45deg,
+    #c2ca76,
+    #a3b25a
+  ); /* Gradient for sunny day */
+  color: #000000; /* Text color */
+}
+
+#custom-weather.clearNight {
+  background: linear-gradient(
+    45deg,
+    #2b2b2a,
+    #1f1f1f
+  ); /* Gradient for clear night */
+  color: #ffffff; /* Text color */
+}
+
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight {
+  background: linear-gradient(
+    45deg,
+    #c2ddda,
+    #a8b9b9
+  ); /* Gradient for cloudy/foggy weather */
+  color: #000000; /* Text color */
+}
+
+#custom-weather.rainyDay,
+#custom-weather.rainyNight {
+  background: linear-gradient(
+    45deg,
+    #5aaca5,
+    #438b7e
+  ); /* Gradient for rainy weather */
+  color: #ffffff; /* Text color */
+}
+
+#custom-weather.snowyIcyDay,
+#custom-weather.snowyIcyNight {
+  background: linear-gradient(
+    45deg,
+    #d6e7e5,
+    #b7d2d1
+  ); /* Gradient for snowy/icy weather */
+  color: #000000; /* Text color */
+}
+
+#custom-weather.default {
+  background: linear-gradient(
+    45deg,
+    #dbd9d8,
+    #b6b4b2
+  ); /* Gradient for default state */
+  color: #000000; /* Text color */
 }
 
 #custom-media {
@@ -254,11 +424,23 @@ label:focus {
 }
 
 #temperature {
-  background-color: #2980b9;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(41, 128, 185, 0.8),
+    rgba(109, 182, 238, 0.8)
+  );
+  color: #ffffff;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(235, 77, 75, 0.8),
+    rgba(255, 134, 134, 0.8)
+  );
+  color: #ffffff;
 }
 
 #tray {
@@ -309,15 +491,21 @@ label:focus {
 }
 
 #keyboard-state {
-  background: #ffffff;
-  color: #000000;
-  padding: 0 0px;
-  margin: 0 5px;
-  min-width: 16px;
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f0f0f0
+  ); /* Light gradient background */
+  color: #000000; /* Text color */
+  padding: 0 10px; /* Added horizontal padding for better spacing */
+  min-width: 16px; /* Minimum width */
+  border-radius: 12px; /* Rounded corners for a nicer look */
 }
 
 #keyboard-state > label {
-  padding: 0 5px;
+  padding: 0 5px; /* Horizontal padding for labels */
+  border-radius: 8px; /* Rounded corners for labels */
+  transition: background 0.3s ease; /* Smooth transition for hover effects */
 }
 
 #keyboard-state > label.locked {
@@ -351,4 +539,12 @@ label:focus {
 
 #privacy-item.audio-out {
   background-color: #0069d4;
+}
+
+tooltip {
+  background-color: #000000;
+  color: #000000;
+  border-radius: 10px;
+  margin: 0px;
+  opacity: 0.9;
 }

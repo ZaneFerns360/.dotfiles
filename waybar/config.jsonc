@@ -12,9 +12,9 @@
         "hyprland/scratchpad",
         "custom/media"
     ],
-    "modules-center": [
+  /*  "modules-center": [
         "hyprland/window"
-    ],
+    ], */
     "modules-right": [
         "mpd",
         "idle_inhibitor",
@@ -30,6 +30,7 @@
         "battery",
         "battery#bat2",
         "clock",
+        "custom/weather",
         "tray",
         "custom/power"
     ],
@@ -41,6 +42,7 @@
          "format": "{name}",
      },
     "keyboard-state": {
+        "interval": 1,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
@@ -202,6 +204,14 @@
         "format": "  ",  // Replace with your desired icon
         "on-click": "hyprpicker --autocopy --format=hex --no-zoom",
     },
+    "custom/weather": {
+    "tooltip": true,
+    "exec": "python $HOME/.dotfiles/waybar/weather.py",
+    "restart-interval": 20,
+    "return-type": "json",
+   // "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)"
+    // "format-alt": "{alt}",
+    },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
@@ -216,14 +226,8 @@
     },
     "custom/power": {
         "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown now",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+        "tooltip": false,
+        "on-click": "wlogout",
 		}
     }
 }

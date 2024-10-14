@@ -32,6 +32,8 @@ params = {
         "cloud_cover_low",
         "cloud_cover_mid",
         "cloud_cover_high",
+        "relative_humidity_2m",
+        "visibility",
     ],
     "daily": [
         "uv_index_max",
@@ -59,13 +61,15 @@ temperature = (
 precipitation_probability = data["hourly"]["precipitation_probability"][current_hour]
 rain = data["hourly"]["rain"][current_hour]
 cloud_cover = data["hourly"]["cloud_cover"][current_hour]
+humidity = data["hourly"]["relative_humidity_2m"][current_hour]
+visibility = data["hourly"]["visibility"][current_hour] / 1000  # Convert to km
 
 # Determine weather status and icon
 if precipitation_probability > 50:
     status = "Rainy"
     icon = weather_icons["rainyDay"]
 else:
-    if cloud_cover < 20:
+    if cloud_cover < 30:
         status = "Sunny"
         icon = weather_icons["sunnyDay"]
     else:
@@ -81,20 +85,26 @@ visbility_text = "Visibility: N/A"  # Placeholder
 air_quality_index = "N/A"  # Placeholder
 prediction = "No significant weather changes expected."
 
-# Create tooltip text
+
 tooltip_text = str.format(
-    "\t\t{}\t\t\n{}\n{}\n{}\n\n{}\n{}\n{}{}",
-    f'<span size="xx-large">{temperature}°C</span>',
-    f"<big>{icon}</big>",
-    f"<big>{status}</big>",
-    f"<small>{temp_feel_text}</small>",
-    f"<big>{temp_min_max}</big>",
-    f"{wind_text}\t{humidity_text}",
-    f"{visbility_text}\tAQI {air_quality_index}",
-    f"<i>{prediction}</i>",
+    "<tt><span size='large'>{}°C</span></tt>\n"
+    "<tt><span color='yellow'>{}</span></tt>\n"
+    "<tt><span color='white'>{}</span></tt>\n"
+    "<tt><small>{}</small></tt>\n\n"
+    "<tt><span color='green'>{}</span></tt>\n"
+    "<tt>{}</tt>\n"
+    "<tt>{}</tt>\n"
+    "<tt><i>{}</i></tt>",
+    temperature,
+    icon,
+    status,
+    temp_feel_text,
+    temp_min_max,
+    wind_text + " | " + humidity_text,
+    visbility_text + " | AQI " + air_quality_index,
+    prediction,
 )
 
-# Print Waybar module data
 out_data = {
     "text": f"{icon}   {temperature}°C" if temperature else "N/A",
     "alt": status,
