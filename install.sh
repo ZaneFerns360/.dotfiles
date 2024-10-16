@@ -38,6 +38,11 @@ if [ -d "$HOME/.config/dunst" ]; then
     rm -r "$HOME/.config/dunst"
 fi
 
+if [ -d "$HOME/.config/gBar" ]; then
+    rm -r "$HOME/.config/gBar"
+fi
+
+
 if [ -L $HOME/.zshrc ]; then
     rm $HOME/.zshrc
 fi
@@ -59,6 +64,7 @@ mkdir $HOME/.config/hypr
 mkdir $HOME/.config/waybar
 mkdir $HOME/.config/wofi
 mkdir $HOME/.config/wlogout
+mkdir $HOME/.config/gBar
 mkdir $HOME/.config/dunst
 mkdir $HOME/.config/xdg-desktop-portal
 
@@ -87,6 +93,9 @@ stow -v -S --target=$HOME/.config/hypr hypr
 
 # Symlink hypr to $HOME/.config/waybar
 stow -v -S --target=$HOME/.config/waybar waybar
+
+# Symlink hypr to $HOME/.config/gBar
+stow -v -S --target=$HOME/.config/gBar gBar
 
 # Symlink hypr to $HOME/.config/wofi
 stow -v -S --target=$HOME/.config/wofi wofi
