@@ -85,7 +85,6 @@ tooltip {
 
 #tray {
   border-radius: 10px;
-  margin-right: 10px;
 }
 
 #workspaces {
@@ -207,7 +206,9 @@ tooltip {
 
 #custom-power {
   border-radius: 10px 10px 10px 10px;
-  border-right: 0px;
+  border-right: 10px;
+  border-left: 0px;
+  margin-right: 0px;
   margin-left: 0px;
 }
 

@@ -5,7 +5,7 @@ import json
 import datetime
 
 weather_icons = {
-    "sunnyDay": "滛",
+    "sunnyDay": " ",
     "clearNight": "望",
     "cloudyFoggyDay": "",
     "cloudyFoggyNight": "",
@@ -60,7 +60,7 @@ temperature = (
 )
 precipitation_probability = data["hourly"]["precipitation_probability"][current_hour]
 rain = data["hourly"]["rain"][current_hour]
-cloud_cover = data["hourly"]["cloud_cover"][current_hour]
+cloud_cover = data["hourly"]["cloud_cover_mid"][current_hour]
 humidity = data["hourly"]["relative_humidity_2m"][current_hour]
 visibility = data["hourly"]["visibility"][current_hour] / 1000  # Convert to km
 
@@ -69,7 +69,7 @@ if precipitation_probability > 50:
     status = "Rainy"
     icon = weather_icons["rainyDay"]
 else:
-    if cloud_cover < 30:
+    if cloud_cover < 70:
         status = "Sunny"
         icon = weather_icons["sunnyDay"]
     else:
