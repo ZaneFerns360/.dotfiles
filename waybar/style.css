@@ -199,7 +199,7 @@ tooltip {
 }
 
 #custom-hyprpicker {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 10px 10px 10px 10px;
   border-right: 0px;
   margin-left: 0px;
 }
@@ -213,7 +213,7 @@ tooltip {
 }
 
 #custom-hyprpicker:hover {
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 10px 10px 10px 10px;
   background-color: gold;
   color: #000000;
   border-right: 0px;
