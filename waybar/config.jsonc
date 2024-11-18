@@ -209,7 +209,7 @@
     "exec": "python $HOME/.dotfiles/waybar/weather.py",
     "restart-interval": 20,
     "return-type": "json",
-   // "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/$(location_id)"
+    "on-click": "python $HOME/.dotfiles/waybar/weather.py"
     // "format-alt": "{alt}",
     },
     "custom/media": {

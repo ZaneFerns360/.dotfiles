@@ -6,15 +6,15 @@ import datetime
 
 weather_icons = {
     "sunnyDay": " ",
-    "clearNight": "望",
-    "cloudyFoggyDay": "",
-    "cloudyFoggyNight": "",
-    "rainyDay": "",
-    "rainyNight": "",
-    "snowyIcyDay": "",
-    "snowyIcyNight": "",
+    "clearNight": "󰖔 ",
+    "cloudyFoggyDay": " ",
+    "cloudyFoggyNight": " ",
+    "rainyDay": " ",
+    "rainyNight": " ",
+    "snowyIcyDay": " ",
+    "snowyIcyNight": " ",
     "severe": "",
-    "default": "",
+    "default": " ",
 }
 
 latitude = 19.0667
@@ -29,18 +29,13 @@ params = {
         "precipitation",
         "rain",
         "cloud_cover",
-        "cloud_cover_low",
-        "cloud_cover_mid",
-        "cloud_cover_high",
         "relative_humidity_2m",
         "visibility",
     ],
     "daily": [
         "uv_index_max",
-        "uv_index_clear_sky_max",
         "precipitation_probability_max",
         "wind_speed_10m_max",
-        "shortwave_radiation_sum",
     ],
     "timezone": "auto",
     "forecast_days": 1,
@@ -49,10 +44,9 @@ params = {
 response = requests.get(url, params=params)
 data = response.json()
 
-# Get current hour in UTC
-current_hour = datetime.datetime.now().hour
+current_time = datetime.datetime.now()
+current_hour = current_time.hour
 
-# Map hourly temperature to current time
 temperature = (
     data["hourly"]["temperature_2m"][current_hour]
     if current_hour < len(data["hourly"]["temperature_2m"])
@@ -60,48 +54,55 @@ temperature = (
 )
 precipitation_probability = data["hourly"]["precipitation_probability"][current_hour]
 rain = data["hourly"]["rain"][current_hour]
-cloud_cover = data["hourly"]["cloud_cover_mid"][current_hour]
+cloud_cover = data["hourly"]["cloud_cover"][current_hour]
 humidity = data["hourly"]["relative_humidity_2m"][current_hour]
-visibility = data["hourly"]["visibility"][current_hour] / 1000  # Convert to km
+visibility = data["hourly"]["visibility"][current_hour] / 1000
 
-# Determine weather status and icon
+is_daytime = 6 <= current_hour <= 18
+
 if precipitation_probability > 50:
     status = "Rainy"
-    icon = weather_icons["rainyDay"]
+    icon = weather_icons["rainyDay"] if is_daytime else weather_icons["rainyNight"]
+elif cloud_cover < 20:
+    status = "Clear"
+    icon = weather_icons["sunnyDay"] if is_daytime else weather_icons["clearNight"]
+elif cloud_cover < 60:
+    status = "Partly Cloudy"
+    icon = (
+        weather_icons["cloudyFoggyDay"]
+        if is_daytime
+        else weather_icons["cloudyFoggyNight"]
+    )
 else:
-    if cloud_cover < 70:
-        status = "Sunny"
-        icon = weather_icons["sunnyDay"]
-    else:
-        status = "Cloudy"
-        icon = weather_icons["cloudyFoggyDay"]
+    status = "Cloudy"
+    icon = (
+        weather_icons["cloudyFoggyDay"]
+        if is_daytime
+        else weather_icons["cloudyFoggyNight"]
+    )
 
-# Prepare tooltip text
-temp_feel_text = f"Feels like: {temperature}°C"
-temp_min_max = f"Min: {min(data['hourly']['temperature_2m'])}°C Max: {max(data['hourly']['temperature_2m'])}°C"
-wind_text = f"Wind: {data['daily']['wind_speed_10m_max'][0]} km/h"
-humidity_text = "Humidity: N/A"  # Placeholder
-visbility_text = "Visibility: N/A"  # Placeholder
-air_quality_index = "N/A"  # Placeholder
-prediction = "No significant weather changes expected."
-
+prediction = (
+    "Expect clear skies with minimal weather disturbances."
+    if precipitation_probability < 30 and cloud_cover < 40
+    else "Rain or significant weather changes expected later in the day."
+    if precipitation_probability > 50
+    else "Partly cloudy with moderate weather conditions."
+)
 
 tooltip_text = str.format(
     "<tt><span size='large'>{}°C</span></tt>\n"
     "<tt><span color='yellow'>{}</span></tt>\n"
     "<tt><span color='white'>{}</span></tt>\n"
-    "<tt><small>{}</small></tt>\n\n"
-    "<tt><span color='green'>{}</span></tt>\n"
-    "<tt>{}</tt>\n"
-    "<tt>{}</tt>\n"
-    "<tt><i>{}</i></tt>",
+    "<tt><small>Humidity: {}% | Visibility: {:.1f} km</small></tt>\n"
+    "<tt><small>Min: {}°C | Max: {}°C</small></tt>\n"
+    "<tt><span color='green'>{}</span></tt>\n",
     temperature,
     icon,
     status,
-    temp_feel_text,
-    temp_min_max,
-    wind_text + " | " + humidity_text,
-    visbility_text + " | AQI " + air_quality_index,
+    humidity,
+    visibility,
+    min(data["hourly"]["temperature_2m"]),
+    max(data["hourly"]["temperature_2m"]),
     prediction,
 )
 
@@ -111,4 +112,5 @@ out_data = {
     "tooltip": tooltip_text,
     "class": status.lower().replace(" ", "_"),
 }
+
 print(json.dumps(out_data))
