@@ -51,6 +51,7 @@ tooltip {
 #keyboard-state,
 #power-profiles-daemon,
 #window,
+#mpd,
 #clock,
 #battery,
 #pulseaudio,
@@ -190,6 +191,12 @@ tooltip {
   animation-timing-function: steps(12);
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+#mpd {
+  border-radius: 10px 10px 10px 10px;
+  border-right: 0px;
+  margin-left: 0px;
 }
 
 #custom-weather {

@@ -16,8 +16,8 @@
         "hyprland/window"
     ], */
     "modules-right": [
-//       "mpd",
-//        "idle_inhibitor",
+       "mpd",
+//       "idle_inhibitor",
 //       "keyboard-state",
         "custom/hyprpicker",
         "pulseaudio",
