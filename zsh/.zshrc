@@ -43,6 +43,7 @@ fi
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
@@ -73,7 +74,7 @@ if [ -z "$TMUX" ]; then
 fi
 
 update(){
-    command yay -Syu --noconfirm --sudoloop
+    command yay -Syu --devel --noconfirm --sudoloop
 }
 
 activate(){
@@ -99,6 +100,9 @@ alias ls='exa --grid'
 alias lg='exa -l --grid --git'
 alias lag='exa -la --grid --header --git'
 alias li='exa -lh --accessed --modified --created'
+
+alias make="make -j`nproc`"
+alias ninja="ninja -j`nproc`"
 
 
 export PATH=/home/zane/.local/bin:$PATH

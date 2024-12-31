@@ -14,6 +14,10 @@ if [ -d "$HOME/.config/kitty" ]; then
     rm -r "$HOME/.config/kitty"
 fi
 
+if [ -d "$HOME/.config/ghostty" ]; then
+    rm -r "$HOME/.config/ghostty"
+fi
+
 if [ -d "$HOME/.config/hypr" ]; then
     rm -r "$HOME/.config/hypr"
 fi
@@ -60,6 +64,7 @@ fi
 
 mkdir $HOME/.config/tmux
 mkdir $HOME/.config/kitty
+mkdir $HOME/.config/ghostty
 mkdir $HOME/.config/hypr
 mkdir $HOME/.config/waybar
 mkdir $HOME/.config/wofi
@@ -87,6 +92,8 @@ tmux source ~/.config/tmux/tmux.conf
 
 # Symlink kitty to $HOME/.config/kitty
 stow -v -S --target=$HOME/.config/kitty kitty
+
+stow -v -S --target=$HOME/.config/ghostty ghostty
 
 # Symlink hypr to $HOME/.config/hypr
 stow -v -S --target=$HOME/.config/hypr hypr
