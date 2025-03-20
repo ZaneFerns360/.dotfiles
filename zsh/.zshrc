@@ -107,6 +107,8 @@ alias e='exit'
 alias q='exit'
 alias c='clear'
 
+alias d='cd ..'
+alias dd='cd ../..'
 
 # Replace ls with exa
 alias la='exa -a --grid'
