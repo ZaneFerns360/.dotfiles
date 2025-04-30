@@ -8,6 +8,21 @@ zstyle :compinstall filename '/home/zane/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+
+# Faster compinit with caching
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' menu select
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' use-cache on
+
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# Autocomplete even if you type middle parts
+zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+
 # End of lines added by compinstall
 bindkey -v
 export EDITOR="nvim"
@@ -87,6 +102,15 @@ if [ -z "$TMUX" ]; then
     fi
 fi
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 update(){
     command yay -Syu --devel --noconfirm --sudoloop
 }
@@ -101,6 +125,7 @@ f() {
   [[ -n "$selected_file" ]] && nvim "$selected_file"
 }
 
+alias y='yazi'
 alias l='nvim'
 alias n='nvim'
 alias e='exit'

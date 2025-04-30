@@ -22,11 +22,11 @@ sudo sysctl -w net.ipv4.ip_forward=1
 # Replace these if your interfaces are named differently
 
 # Allow forwarding
-sudo iptables -A FORWARD -i virbr0 -o wlan0 -j ACCEPT
-sudo iptables -A FORWARD -i wlan0 -o virbr0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+#sudo iptables -A FORWARD -i virbr0 -o wlan0 -j ACCEPT
+#sudo iptables -A FORWARD -i wlan0 -o virbr0 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # Set up NAT
-sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+#sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 
 # Optional: If you want to allow incoming connections to your VM, you'll need to add port forwarding rules
 # For example, to forward incoming connections on port 8080 to your VM's port 80:
