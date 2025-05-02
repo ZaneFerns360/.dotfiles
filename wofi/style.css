@@ -20,15 +20,6 @@
 }
 
 #input {
-	margin: 1rem;
-	padding: 0.7rem 1rem;
-	border-radius: 10px;
-	background-color: #252A44;
-	color: #D8DEF3;
-	border-bottom: 2px solid #6F95D2;
-}
-
-#input {
 	margin: 0.75rem;
 	margin-left: 350px;
 	margin-right: 350px;

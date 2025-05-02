@@ -15,13 +15,7 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' use-cache on
-
-
-# Case-insensitive completion
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-# Autocomplete even if you type middle parts
-zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # End of lines added by compinstall
 bindkey -v
@@ -62,6 +56,7 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
+ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 function _zsh_autosuggest_predict_command() {
     local command="$1"
