@@ -1,4 +1,5 @@
-font-family = JetBrains Mono Nerd Font
+font-family = JetBrainsMono Nerd Font
+font-style = bold
 theme = zen
 font-size = 13
 freetype-load-flags = force-autohint
@@ -9,5 +10,5 @@ mouse-hide-while-typing = true
 cursor-style = block
 cursor-opacity = 0.8
 cursor-invert-fg-bg = true
-bold-is-bright = true
-window-padding-y = 0,0
+bold-is-bright = false
+window-padding-y = 5,0
