@@ -1,10 +1,11 @@
 font-family = JetBrainsMono Nerd Font
 font-style = bold
-theme = zen
+confirm-close-surface = false
+theme = tokyonight
 font-size = 13
 freetype-load-flags = force-autohint
 gtk-single-instance = true
-background-opacity = 0.8
+background-opacity = 0.92
 window-decoration = false
 mouse-hide-while-typing = true
 cursor-style = block

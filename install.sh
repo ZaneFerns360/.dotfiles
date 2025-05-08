@@ -59,6 +59,9 @@ if [ -L $HOME/.ideavimrc ]; then
     rm $HOME/.ideavimrc
 fi
 
+if [ -L $HOME/.config/brave-flags.conf ]; then
+    rm $HOME/.config/brave-flags.conf
+fi
 
 # Symlink tmux to $HOME/.config/tmux
 
@@ -120,6 +123,8 @@ stow -v -S --target=$HOME/.config/xdg-desktop-portal xdg-desktop-portal
 stow -v -S --override --target=$HOME wezterm
 
 stow -v -S --override --target=$HOME idea
+
+stow -v -S --override --target=$HOME brave
 
 source $HOME/.zshrc
 starship preset pure-preset -o ~/.config/starship.toml
