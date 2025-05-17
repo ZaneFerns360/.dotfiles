@@ -82,20 +82,36 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #gdb
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 
-#tmux
-#[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
+create_session_name() {
+    local dir_hash=$(echo "$(pwd)" | md5sum | cut -c1-8)
+    echo "tmux-${dir_hash}"
+}
 
-# Check if TMUX is not already running
+# Only run if not already in a tmux session and not in VSCode
 if [ -z "$TMUX" ]; then
-    # If the terminal is running in VSCode, exit without creating a tmux session
+    # Skip if in VSCode
     if [[ "$TERM_PROGRAM" == "vscode" ]]; then
         :
     else
-        # Otherwise, attach to an existing tmux session or create a new one
-        exec tmux new-session && exit
-        exit
+        # Generate a unique session name based on current directory
+        SESSION_NAME=$(create_session_name)
+        
+        # Check if this specific session exists
+        if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+            # Attach to existing session for this directory
+            exec tmux attach -t "$SESSION_NAME"
+        else
+            # Create a new session with the unique name
+            exec tmux new-session -s "$SESSION_NAME"
+        fi
     fi
 fi
+# Add helpful tmux aliases
+alias tnw="tmux new-window -c '#{pane_current_path}'"
+alias tls="tmux list-sessions"
+alias ta="tmux attach -t"
+alias tn="tmux new-session -s"
+alias tk="tmux kill-session -t"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
