@@ -30,8 +30,8 @@ if [ -d "$HOME/.config/xdg-desktop-portal" ]; then
     rm -r "$HOME/.config/xdg-desktop-portal"
 fi
 
-if [ -d "$HOME/.config/wofi" ]; then
-    rm -r "$HOME/.config/wofi"
+if [ -d "$HOME/.config/rofi" ]; then
+    rm -r "$HOME/.config/rofi"
 fi
 
 if [ -d "$HOME/.config/wlogout" ]; then
@@ -40,6 +40,10 @@ fi
 
 if [ -d "$HOME/.config/dunst" ]; then
     rm -r "$HOME/.config/dunst"
+fi
+
+if [ -d "$HOME/.config/swaync" ]; then
+    rm -r "$HOME/.config/swaync"
 fi
 
 if [ -d "$HOME/.config/gBar" ]; then
@@ -70,10 +74,11 @@ mkdir $HOME/.config/kitty
 mkdir $HOME/.config/ghostty
 mkdir $HOME/.config/hypr
 mkdir $HOME/.config/waybar
-mkdir $HOME/.config/wofi
+mkdir $HOME/.config/rofi
 mkdir $HOME/.config/wlogout
 mkdir $HOME/.config/gBar
 mkdir $HOME/.config/dunst
+mkdir $HOME/.config/swaync
 mkdir $HOME/.config/xdg-desktop-portal
 
 stow -v -S --target=$HOME/.config/tmux tmux
@@ -107,14 +112,17 @@ stow -v -S --target=$HOME/.config/waybar waybar
 # Symlink hypr to $HOME/.config/gBar
 stow -v -S --target=$HOME/.config/gBar gBar
 
-# Symlink hypr to $HOME/.config/wofi
-stow -v -S --target=$HOME/.config/wofi wofi
+# Symlink hypr to $HOME/.config/rofi
+stow -v -S --target=$HOME/.config/rofi rofi
 
 # Symlink hypr to $HOME/.config/wlogout
 stow -v -S --target=$HOME/.config/wlogout wlogout
 
 # Symlink hypr to $HOME/.config/dunst
 stow -v -S --target=$HOME/.config/dunst dunst
+
+# Symlink hypr to $HOME/.config/swaync
+stow -v -S --target=$HOME/.config/swaync swaync
 
 # Symlink hypr to $HOME/.config/xdg-desktop-portal
 stow -v -S --target=$HOME/.config/xdg-desktop-portal xdg-desktop-portal
