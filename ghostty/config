@@ -1,7 +1,7 @@
 font-family = JetBrainsMono Nerd Font
 font-style = bold
 confirm-close-surface = false
-theme = tokyonight
+theme = TokyoNight
 font-size = 13
 freetype-load-flags = force-autohint
 gtk-single-instance = true

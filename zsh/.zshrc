@@ -83,27 +83,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 
 create_session_name() {
-    local dir_hash=$(echo "$(pwd)" | md5sum | cut -c1-8)
-    echo "tmux-${dir_hash}"
+    echo "tmux-$(date +%s%N)"
 }
 
-# Only run if not already in a tmux session and not in VSCode
 if [ -z "$TMUX" ]; then
-    # Skip if in VSCode
     if [[ "$TERM_PROGRAM" == "vscode" ]]; then
         :
     else
-        # Generate a unique session name based on current directory
         SESSION_NAME=$(create_session_name)
-        
-        # Check if this specific session exists
-        if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-            # Attach to existing session for this directory
-            exec tmux attach -t "$SESSION_NAME"
-        else
-            # Create a new session with the unique name
-            exec tmux new-session -s "$SESSION_NAME"
-        fi
+        exec tmux new-session -s "$SESSION_NAME"
     fi
 fi
 # Add helpful tmux aliases
@@ -136,6 +124,12 @@ f() {
   [[ -n "$selected_file" ]] && nvim "$selected_file"
 }
 
+ins() {
+    echo "Enter package:"
+    read package
+    yay -Syu "$package" --noconfirm --sudoloop
+}
+
 alias y='yazi'
 alias l='nvim'
 alias n='nvim'
@@ -156,6 +150,7 @@ alias li='exa -lh --accessed --modified --created'
 alias make="make -j`nproc`"
 alias ninja="ninja -j`nproc`"
 
+alias pp="uv pip install"
 
 export PATH=/home/zane/.local/bin:$PATH
 #zoxide
