@@ -1,4 +1,6 @@
 #!/usr/bin/zsh
+#
+#systemctl --user enable --now mpris-proxy.service
 
 # Undo existing symlinks if they exist
 if [ -d "$HOME/.config/tmux" ]; then
