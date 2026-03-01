@@ -127,7 +127,7 @@ f() {
 ins() {
     echo "Enter package:"
     read package
-    yay -Syu "$package" --noconfirm --sudoloop
+    yay -Syyu "$package" --noconfirm --sudoloop
 }
 
 alias y='yazi'
