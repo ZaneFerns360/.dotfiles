@@ -28,7 +28,6 @@ localsend-bin
 lowkey-git
 lowkey-git-debug
 mono-basic
-ngrok
 onlyoffice-bin
 openssl-1.1-debug
 popsicle-git
@@ -40,7 +39,6 @@ remix-desktop
 rose-pine-cursor
 rose-pine-hyprcursor
 sddm-theme-tokyo-night-git
-selenium-manager-debug
 trantor
 trantor-debug
 ttf-google-fonts-git

@@ -90,12 +90,6 @@ lazygit
 libffi7
 libguestfs
 libva-intel-driver
-linux
-linux-firmware-intel
-linux-firmware-nvidia
-linux-firmware-other
-linux-firmware-realtek
-linux-headers
 localsend-bin
 lowkey-git
 luarocks
@@ -116,7 +110,6 @@ noise-suppression-for-voice
 noto-fonts-emoji
 npm
 nvidia-container-toolkit
-nvidia-open
 nvidia-prime
 nvidia-settings
 nwg-shell

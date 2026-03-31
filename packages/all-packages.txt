@@ -21,8 +21,6 @@ alsa-utils
 aom
 appstream
 aquamarine
-archlinux-keyring
-archlinux-xdg-menu
 argon2
 aribb24
 aribb25
@@ -1051,14 +1049,6 @@ libyuv
 libzip
 licenses
 lilv
-linux
-linux-api-headers
-linux-firmware-intel
-linux-firmware-nvidia
-linux-firmware-other
-linux-firmware-realtek
-linux-firmware-whence
-linux-headers
 lirc
 live-media
 llhttp
@@ -1144,7 +1134,6 @@ nss
 ntfs-3g
 numactl
 nvidia-container-toolkit
-nvidia-open
 nvidia-prime
 nvidia-settings
 nvidia-utils
@@ -1664,7 +1653,6 @@ syndication
 syntax-highlighting
 syntax-highlighting5
 sysfsutils
-syslinux
 systemd
 systemd-libs
 systemd-sysvcompat
@@ -1748,8 +1736,6 @@ unzip
 upower
 usbredir
 uthash
-util-linux
-util-linux-libs
 uv
 uwsm
 v4l-utils
