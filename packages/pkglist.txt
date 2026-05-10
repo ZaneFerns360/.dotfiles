@@ -1,4 +1,3 @@
-acpi_call-dkms
 alsa-utils
 archlinux-xdg-menu
 ark
@@ -20,7 +19,6 @@ clang
 cmake
 cmatrix
 curl
-dnsmasq
 docker
 dolphin
 dosfstools
@@ -40,7 +38,6 @@ gimp
 git
 glu
 go
-grub
 gupnp-tools
 gwenview
 hdf5
@@ -79,16 +76,13 @@ meson
 mtools
 mtpfs
 neovim
-networkmanager
 ninja
-noise-suppression-for-voice
 noto-fonts-emoji
 npm
 nwg-shell
 obs-studio
 okular
 onlyoffice-bin
-os-prober
 pandoc-cli
 pavucontrol
 pdfarranger
@@ -104,7 +98,6 @@ qt5ct
 qt6-imageformats
 qt6-tools
 qt6ct
-rkward
 rofi
 rofimoji
 rose-pine-cursor
@@ -142,9 +135,7 @@ ttf-jetbrains-mono-nerd
 ttf-ms-fonts
 uv
 uwsm
-valkey
 vde2
-ventoy-bin
 virt-manager
 virt-viewer
 visual-studio-code-bin
