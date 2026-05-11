@@ -19,6 +19,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # End of lines added by compinstall
 bindkey -v
+bindkey "^?" backward-delete-char
+bindkey "^H" backward-delete-char
+
+# Optional: make escape sequences faster
+KEYTIMEOUT=1
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 
