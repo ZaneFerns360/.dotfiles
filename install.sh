@@ -1,6 +1,4 @@
 #!/usr/bin/zsh
-#
-#systemctl --user enable --now mpris-proxy.service
 
 # Undo existing symlinks if they exist
 if [ -d "$HOME/.config/tmux" ]; then
@@ -136,5 +134,24 @@ stow -v -S --override --target=$HOME idea
 
 # stow -v -S --override --target=$HOME brave/brave
 
+echo "Enabling Hyprland user services..."
+
+systemctl --user enable waybar.service
+systemctl --user enable hypridle.service
+systemctl --user enable hyprpaper.service
+systemctl --user enable hyprsunset.service
+systemctl --user enable swaync.service
+
+systemctl --user enable app-nm\\x2dapplet@autostart.service
+
+systemctl --user enable battery-monitor.service
+
+systemctl --user enable hyprpolkitagent.service
+
+systemctl --user enable mpris-proxy.service
+
 source $HOME/.zshrc
 starship preset pure-preset -o ~/.config/starship.toml
+
+sleep 3
+hyprctl reload

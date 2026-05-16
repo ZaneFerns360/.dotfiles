@@ -116,7 +116,7 @@ function y() {
 }
 
 update(){
-    command yay -Syu --devel --noconfirm --sudoloop
+    command paru -Syu --devel --noconfirm --sudoloop
 }
 
 activate(){
@@ -132,7 +132,7 @@ f() {
 ins() {
     echo "Enter package:"
     read package
-    yay -Syyu "$package" --noconfirm --sudoloop
+    paru -Syyu "$package" --noconfirm --sudoloop
 }
 
 alias y='yazi'
