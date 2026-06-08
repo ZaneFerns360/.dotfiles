@@ -4,7 +4,7 @@
 
 hl.monitor({
 	output = "",
-	mode = "1920x1200@60.02",
+	mode = "1920x1200@165.00",
 	position = "auto",
 	scale = "1",
 })
@@ -36,17 +36,17 @@ end)
 
 for i = 1, 8 do
 	hl.workspace_rule({
-		workspace = "name:" .. i,
-		monitor = "DP-1",
+		workspace = tostring(i),
+		monitor = "eDP-1",
 		decorate = true,
 		persistent = true,
 	})
 end
 
-for i = 1, 8 do
-	hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = \"" .. i .. "\" })'")
-end
-
+-- for i = 1, 8 do
+-- 	hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = \"" .. i .. "\" })'")
+-- end
+--
 hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = \"1\" })'")
 
 hl.config({
@@ -138,8 +138,10 @@ hl.bind("SUPER + I", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind("SUPER + S", hl.dsp.exec_cmd("shutdown now"))
 hl.bind("SUPER + R", hl.dsp.exec_cmd("reboot"))
 
+hl.bind("SUPER + D", hl.dsp.exec_cmd([[sh -c 'echo "hello world" | wl-copy']]))
+
 hl.bind("xf86Launch1", hl.dsp.exec_cmd("zen-browser"))
-hl.bind("KP_End", hl.dsp.exec_cmd("ghostty"))
+--hl.bind("KP_End", hl.dsp.exec_cmd("ghostty"))
 
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
@@ -163,12 +165,14 @@ hl.bind("SUPER + SHIFT + J", hl.dsp.window.resize({ x = 0, y = 10, relative = tr
 
 -- Switch workspaces with SUPER + [0-9]
 -- Move active window to a workspace with SUPER + SHIFT + [0-9]
-for i = 1, 10 do
+for i = 1, 9 do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind("SUPER + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
+hl.bind("F1", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind("F2", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
@@ -201,8 +205,30 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
+hl.config({
+	xwayland = {
+		force_zero_scaling = true,
+	},
+})
+
 hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" })
 hl.window_rule({ match = { namespace = "rofi" }, animation = "popin" })
+--windowrulev2 = fullscreen, class:^(steam_app_.*)$
+--hl.window_rule({ match = { class = "^(steam_app_.*)$" }, suppress_event = "maximize" })
+hl.window_rule({
+	match = { class = "^(gamescope|steam_app_.*)$" },
+	fullscreen = true,
+	immediate = true,
+	no_blur = true,
+	rounding = 0,
+	no_max_size = true,
+	no_shadow = true,
+	no_dim = true,
+	sync_fullscreen = true,
+	border_size = 0,
+	fullscreen_state = "2 2",
+	content = "game",
+})
 
 hl.env("TERMINAL", "ghostty")
 

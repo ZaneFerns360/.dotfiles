@@ -55,6 +55,4 @@ ventoy-bin-debug
 visual-studio-code-bin
 wlogout
 wlogout-debug
-yay
-yay-debug
 zen-browser-bin
